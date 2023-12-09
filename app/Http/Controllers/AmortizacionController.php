@@ -44,7 +44,28 @@ class AmortizacionController extends Controller
 
     public function destroy(Amortizacion $amortizacion)
     {
+        $prestamo = $amortizacion->prestamo;
+        $plazo = $amortizacion->prestamo->plazo_id;
+        $monto = $amortizacion->prestamo->monto_id;
+
+        if($plazo > 1){
+            $plazo -= 1;
+        }
+        if($monto > 1){
+            $monto -= 1;
+        }
+        $amortizacion->prestamo->update([
+            'monto_id' => $monto,
+            'plazo_id' => $plazo,
+        ]);
+
         $amortizacion->delete();
-        return to_route('prestamos.index')->with('status', __('Pago Realizado'));
+
+        // Verificar si es el último registro
+        if ($prestamo->amortizaciones()->count() == 0) {
+            return redirect()->route('prestamos.index')->with('status', __('Prestamo Saldado'));
+        } else {
+            return redirect()->route('prestamos.index')->with('status', __('Pago Realizado'));
+        }
     }
 }

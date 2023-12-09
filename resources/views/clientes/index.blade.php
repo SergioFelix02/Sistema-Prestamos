@@ -52,12 +52,12 @@
                                 </x-slot>
                                 <x-slot name="content">
                                     <x-dropdown-link :href="route('clientes.edit', $cliente)">
-                                        Editar cliente
+                                        {{ __('Editar') }}
                                     </x-dropdown-link>
                                     <form method="POST" action="{{ route('clientes.destroy', $cliente) }}">
                                         @csrf @method('DELETE')
                                         <x-dropdown-link :href="route('clientes.destroy', $cliente)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                            {{ __('Eliminar cliente') }}
+                                            {{ __('Eliminar') }}
                                         </x-dropdown-link>
                                     </form>
                                 </x-slot>

@@ -67,7 +67,6 @@ class PrestamoController extends Controller
         $montos = Monto::all();
         $plazos = Plazo::all();
         return view('prestamos.edit', compact('prestamo', 'clientes', 'montos', 'plazos'));
-
     }
 
     public function update(Request $request, Prestamo $prestamo)
@@ -96,5 +95,4 @@ class PrestamoController extends Controller
         $prestamo->delete();
         return to_route('prestamos.index')->with('status', __('Prestamo Eliminado'));
     }
-
 }

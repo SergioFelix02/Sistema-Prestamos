@@ -23,5 +23,9 @@ class Amortizacion extends Model
         return $this->belongsTo(Prestamo::class);
     }
 
+    //verificar si es la ultima amortizacion
+    protected $dispatchesEvents = [
+        'deleting' => \App\Events\AmortizacionDeleting::class,
+    ];
 }
 

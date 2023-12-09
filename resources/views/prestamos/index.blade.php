@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <label for="plazo_id" class="block text-sm font-bold mb-2 mt-2 text-gray-800 dark:text-gray-200">Selecciona un Plazo:</label>
+                        <label for="plazo_id" class="block text-sm font-bold mb-2 mt-2 text-gray-800 dark:text-gray-200">Selecciona un Plazo (Quincenal):</label>
                         <div class="relative">
                             <select id="plazo_id" name="plazo_id" class="block appearance-none w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 dark:text-white">
                                 @foreach ($plazos as $plazo)
@@ -50,6 +50,7 @@
                         </div>
                         <x-input-error :messages="$errors->get('prestamo')" class="mt-2"/>
                         <x-primary-button class="mt-4">Agregar Prestamo</x-primary-button>
+                        <x-secondary-button type="reset" class="mt-4" >Cancelar</x-secondary-button>
                     </form>
                 </div>
             </div>
@@ -84,15 +85,15 @@
                                     </x-slot>
                                     <x-slot name="content">
                                         <x-dropdown-link :href="route('amortizaciones.index', $prestamo)">
-                                            Amortizaciones
+                                            {{ __('Amortizaciones') }}
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('prestamos.edit', $prestamo)">
-                                            Editar prestamo
+                                            {{ __('Editar') }}
                                         </x-dropdown-link>
                                         <form method="POST" action="{{ route('prestamos.destroy', $prestamo) }}">
                                             @csrf @method('DELETE')
                                             <x-dropdown-link :href="route('prestamos.destroy', $prestamo)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                {{ __('Eliminar prestamo') }}
+                                                {{ __('Eliminar') }}
                                             </x-dropdown-link>
                                         </form>
                                     </x-slot>

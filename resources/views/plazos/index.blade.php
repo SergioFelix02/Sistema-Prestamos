@@ -50,12 +50,12 @@
                                     </x-slot>
                                     <x-slot name="content">
                                         <x-dropdown-link :href="route('plazos.edit', $plazo)">
-                                            Editar plazo
+                                            {{ __('Editar') }}
                                         </x-dropdown-link>
                                         <form method="POST" action="{{ route('plazos.destroy', $plazo) }}">
                                             @csrf @method('DELETE')
                                             <x-dropdown-link :href="route('plazos.destroy', $plazo)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                {{ __('Eliminar plazo') }}
+                                                {{ __('Eliminar') }}
                                             </x-dropdown-link>
                                         </form>
                                     </x-slot>

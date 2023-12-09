@@ -4,7 +4,7 @@
         // Ocultar el mensaje de estado después de 3 segundos (3000 milisegundos)
         setTimeout(function(){
             $(".status-message").fadeOut("slow");
-        }, 2000);
+        }, 1500);
     });
 </script>
 

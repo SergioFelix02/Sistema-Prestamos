@@ -35,24 +35,14 @@
                                 <td>{{ '$' . $amortizacion->interes}}</td>
                                 <td>{{ '$' . $amortizacion->abono }}</td>
                                 <td>
-                                    <x-dropdown>
-                                        <x-slot name="trigger">
-                                            <button>
-                                                <svg class="w-5 h-5 text-gray-500 dark:text-gray-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                    <path clip-rule="evenodd" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"></path>
-                                                  </svg>
-
-                                            </button>
-                                        </x-slot>
-                                        <x-slot name="content">
-                                            <form method="POST" action="{{ route('amortizaciones.destroy', $amortizacion) }}">
-                                                @csrf @method('DELETE')
-                                                <x-dropdown-link :href="route('amortizaciones.destroy', $amortizacion)" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    {{ __('Confirmar') }}
-                                                </x-dropdown-link>
-                                            </form>
-                                        </x-slot>
-                                    </x-dropdown>
+                                    <form method="POST" action="{{ route('amortizaciones.destroy', $amortizacion) }}">
+                                        @csrf @method('DELETE')
+                                        <button :href="route('amortizaciones.destroy', $amortizacion)" onclick="event.preventDefault(); this.closest('form').submit();">
+                                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path clip-rule="evenodd" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"></path>
+                                                </svg>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php
