@@ -6,6 +6,7 @@ use App\Models\Amortizacion;
 use Illuminate\Http\Request;
 use App\Models\Prestamo;
 use App\Models\Cliente;
+use Illuminate\Database\QueryException;
 
 class AmortizacionController extends Controller
 {
@@ -48,18 +49,21 @@ class AmortizacionController extends Controller
         $plazo = $amortizacion->prestamo->plazo_id;
         $monto = $amortizacion->prestamo->monto_id;
 
-        if($plazo > 1){
-            $plazo -= 1;
+        try {
+            if($plazo > 1){
+                $plazo -= 1;
+            }
+            if($monto > 1){
+                $monto -= 1;
+            }
+            $amortizacion->prestamo->update([
+                'monto_id' => $monto,
+                'plazo_id' => $plazo,
+            ]);
+            $amortizacion->delete();
+        } catch (QueryException $e) {
+            return redirect()->route('prestamos.index')->with('status', 'Error en la base de datos: ' . $e->getMessage());
         }
-        if($monto > 1){
-            $monto -= 1;
-        }
-        $amortizacion->prestamo->update([
-            'monto_id' => $monto,
-            'plazo_id' => $plazo,
-        ]);
-
-        $amortizacion->delete();
 
         // Verificar si es el último registro
         if ($prestamo->amortizaciones()->count() == 0) {

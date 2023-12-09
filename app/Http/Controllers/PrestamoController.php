@@ -71,23 +71,39 @@ class PrestamoController extends Controller
 
     public function update(Request $request, Prestamo $prestamo)
     {
+
+        $prestamo->delete();
+
         $validatedData = $request->validate([
             'cliente_id' => 'required',
             'monto_id' => 'required',
             'plazo_id' => 'required',
         ]);
 
-        $prestamo->update([
-            'cliente_id' => $validatedData['cliente_id'],
-            'monto_id' => $validatedData['monto_id'],
-            'plazo_id' => $validatedData['plazo_id'],
-        ]);
+        $prestamo = new Prestamo();
+        $prestamo->cliente_id = $validatedData['cliente_id'];
+        $prestamo->monto_id = $validatedData['monto_id'];
+        $prestamo->plazo_id = $validatedData['plazo_id'];
+        $prestamo->save();
 
-        if ($prestamo->wasChanged()) {
-            return redirect()->route('prestamos.index')->with('status', __('Prestamo Actualizado'));
-        } else {
-            return redirect()->route('prestamos.index')->with('status', __('No se realizaron cambios'));
+        $cant = floatval($prestamo->monto->monto);
+        $pago = $prestamo->plazo->plazo;
+        $fecha = $prestamo->created_at;
+        $fecha = date("Y/m/d",strtotime($fecha."+ 2 week"));
+
+        for ($i = 1; $i<=$pago; $i++){
+            $amortizacion = new Amortizacion();
+            $amortizacion->pago = $i;
+            $amortizacion->fecha = $fecha;
+            $amortizacion->prestamo_id = $prestamo->id;
+            $amortizacion->interes = ($cant/$pago) * 0.11;
+            $amortizacion->abono = ($cant/$pago) * 1.11;
+            $amortizacion->save();
+            $fecha = date("Y/m/d",strtotime($fecha."+ 2 week"));
         }
+
+        return redirect()->route('prestamos.index')->with('status', __('Prestamo Actualizado'));
+
     }
 
     public function destroy(Prestamo $prestamo)
