@@ -1,6 +1,5 @@
 <div id="top"></div>
-<img src="src/com/images/readmeBlueLine.png" alt="Logo" width="280" height="20" align="center">
-<h3>Proyecto Final: Sistema de Préstamos</h3>
+<h3>Sistema de Préstamos</h3>
   <p>
     Hecho Por:<br><br>
     Sergio Felix<br>
