@@ -17,7 +17,7 @@ class PlazoController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'plazo' => ['required', 'min:1', 'max:24', 'numeric'],
+            'plazo' => ['required', 'min:1', 'max:24', 'integer'],
         ]);
 
         plazo::create([
@@ -42,7 +42,7 @@ class PlazoController extends Controller
     public function update(Request $request, Plazo $plazo)
     {
         $validated = $request->validate([
-            'plazo' => ['required', 'min:1', 'max:24', 'numeric'],
+            'plazo' => ['required', 'min:1', 'max:24', 'integer'],
         ]);
 
         $plazo->update($validated);
