@@ -85,15 +85,26 @@
                                     </x-slot>
                                     <x-slot name="content">
                                         <x-dropdown-link :href="route('amortizaciones.index', $prestamo)">
+<<<<<<< HEAD
                                             {{ __('Amortizaciones') }}
                                         </x-dropdown-link>
                                         <x-dropdown-link :href="route('prestamos.edit', $prestamo)">
                                             {{ __('Editar') }}
+=======
+                                            Amortizaciones
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('prestamos.edit', $prestamo)">
+                                            Editar prestamo
+>>>>>>> 08a7311f74173e9b075de83444b7df1cd94d35bd
                                         </x-dropdown-link>
                                         <form method="POST" action="{{ route('prestamos.destroy', $prestamo) }}">
                                             @csrf @method('DELETE')
                                             <x-dropdown-link :href="route('prestamos.destroy', $prestamo)" onclick="event.preventDefault(); this.closest('form').submit();">
+<<<<<<< HEAD
                                                 {{ __('Eliminar') }}
+=======
+                                                {{ __('Eliminar prestamo') }}
+>>>>>>> 08a7311f74173e9b075de83444b7df1cd94d35bd
                                             </x-dropdown-link>
                                         </form>
                                     </x-slot>
