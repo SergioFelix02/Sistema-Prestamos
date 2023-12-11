@@ -7,6 +7,7 @@ Sergio Felix<br>
 PHP Laravel<br>
 MySQL<br>
 <h3>Instrucciones</h3>
+(La BD se encuentra en la carpeta database)
 1 - Cambiar credenciales de MySQL en archivo .env<br>
 2 - Ejecutar comando composer install<br>
 3 - Ejecutar comando npm install<br>
