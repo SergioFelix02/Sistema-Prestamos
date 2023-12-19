@@ -1,8 +1,6 @@
-<div id="top"></div>
 # Sistema de Préstamos
 <h3>Hecho Por</h3>
 Sergio Felix<br>
-</div>
 <h3>Desarrollado en</h3>
 PHP Laravel<br>
 MySQL<br>
