@@ -1,8 +1,12 @@
 # Sistema de Préstamos
+
+Pagina web con un sistema de préstamos y amortizaciones realizado como examen técnico para la empresa Caprepa
+
 <h3>Hecho Por</h3>
 Sergio Felix<br>
 <h3>Desarrollado en</h3>
-PHP Laravel<br>
+PHP<br>
+Laravel<br>
 MySQL<br>
 <h3>Instrucciones</h3>
 (La BD se encuentra en la carpeta database)<br>
