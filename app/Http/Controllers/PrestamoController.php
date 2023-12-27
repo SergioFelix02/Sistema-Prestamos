@@ -15,7 +15,7 @@ class PrestamoController extends Controller
     public function index()
     {
         $amortizaciones = Amortizacion::all();
-        $prestamos = Prestamo::all();
+        $prestamos = Prestamo::where('status', 1)->get();
         $clientes = Cliente::all();
         $montos = Monto::all();
         $plazos = Plazo::all();
@@ -35,10 +35,11 @@ class PrestamoController extends Controller
         $prestamo->cliente_id = $validatedData['cliente_id'];
         $prestamo->monto_id = $validatedData['monto_id'];
         $prestamo->plazo_id = $validatedData['plazo_id'];
+        $prestamo->status = 1;
         $prestamo->save();
 
-        $cant = floatval($prestamo->monto->monto);
-        $pago = $prestamo->plazo->plazo;
+        $cant = floatval($prestamo->monto_id);
+        $pago = $prestamo->plazo_id;
         $fecha = $prestamo->created_at;
         $fecha = date("Y/m/d",strtotime($fecha."+ 2 week"));
 
@@ -84,10 +85,11 @@ class PrestamoController extends Controller
         $prestamo->cliente_id = $validatedData['cliente_id'];
         $prestamo->monto_id = $validatedData['monto_id'];
         $prestamo->plazo_id = $validatedData['plazo_id'];
+        $prestamo->status = 1;
         $prestamo->save();
 
-        $cant = floatval($prestamo->monto->monto);
-        $pago = $prestamo->plazo->plazo;
+        $cant = floatval($prestamo->monto_id);
+        $pago = $prestamo->plazo_id;
         $fecha = $prestamo->created_at;
         $fecha = date("Y/m/d",strtotime($fecha."+ 2 week"));
 
@@ -108,7 +110,9 @@ class PrestamoController extends Controller
 
     public function destroy(Prestamo $prestamo)
     {
-        $prestamo->delete();
+        $prestamo->update([
+            'status' => 0,
+        ]);
         return to_route('prestamos.index')->with('status', __('Prestamo Eliminado'));
     }
 }

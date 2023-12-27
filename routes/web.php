@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/amortizaciones/{prestamo}', [AmortizacionController::class, 'index'])->name('amortizaciones.index');
     Route::delete('/amortizaciones/{amortizacion}', [AmortizacionController::class, 'destroy'])->name('amortizaciones.destroy');
 
+
 });
 
 require __DIR__.'/auth.php';

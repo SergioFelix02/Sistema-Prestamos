@@ -14,8 +14,8 @@ class Monto extends Model
         'monto',
     ];
 
-    public function prestamos(): HasMany
-    {
-        return $this->hasMany(Prestamo::class);
-    }
+    // public function prestamos(): HasMany
+    // {
+    //     return $this->hasMany(Prestamo::class);
+    // }
 }

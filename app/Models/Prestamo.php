@@ -16,21 +16,22 @@ class Prestamo extends Model
         'cliente_id',
         'monto_id',
         'plazo_id',
+        'status',
     ];
 
     public function cliente(): BelongsTo
     {
         return $this->belongsTo(Cliente::class);
     }
-    public function monto(): BelongsTo
-    {
-        return $this->belongsTo(Monto::class);
-    }
+    // public function monto(): BelongsTo
+    // {
+    //     return $this->belongsTo(Monto::class);
+    // }
 
-    public function plazo(): BelongsTo
-    {
-        return $this->belongsTo(Plazo::class);
-    }
+    // public function plazo(): BelongsTo
+    // {
+    //     return $this->belongsTo(Plazo::class);
+    // }
 
     public function amortizaciones(): HasMany
     {

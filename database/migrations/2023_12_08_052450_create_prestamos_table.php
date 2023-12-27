@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cliente_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('monto_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('plazo_id')->constrained()->cascadeOnDelete();
+            $table->float('monto');
+            // $table->foreignId('monto_id')->constrained()->cascadeOnDelete();
+            $table->int('plazo');
+            // $table->foreignId('plazo_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+            $table->int('status');
         });
     }
 

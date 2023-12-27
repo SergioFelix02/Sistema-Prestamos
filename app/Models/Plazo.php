@@ -15,8 +15,8 @@ class Plazo extends Model
     ];
 
 
-    public function prestamos(): HasMany
-    {
-        return $this->hasMany(Prestamo::class);
-    }
+    // public function prestamos(): HasMany
+    // {
+    //     return $this->hasMany(Prestamo::class);
+    // }
 }
