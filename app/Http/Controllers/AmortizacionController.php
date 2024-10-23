@@ -46,13 +46,13 @@ class AmortizacionController extends Controller
     public function destroy(Amortizacion $amortizacion)
     {
         $prestamo = $amortizacion->prestamo;
-        $plazo = $amortizacion->prestamo->plazo_id;
-        $monto = $amortizacion->prestamo->monto_id;
+        // $plazo = $amortizacion->prestamo->plazo;
+        // $monto = $amortizacion->prestamo->monto;
 
-        $amortizacion->prestamo->update([
-            'monto_id' => $monto - $monto / $plazo,
-            'plazo_id' => $plazo - 1,
-        ]);
+        // $amortizacion->prestamo->update([
+        //     'monto' => $monto->monto / $plazo->plazo,
+        //     'plazo' => $plazo->plazo - 1,
+        // ]);
 
         $amortizacion->delete();
 

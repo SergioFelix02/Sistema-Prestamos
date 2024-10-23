@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('cliente_id')->constrained()->cascadeOnDelete();
             $table->float('monto');
-            // $table->foreignId('monto_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('monto')->constrained()->cascadeOnDelete();
             $table->int('plazo');
-            // $table->foreignId('plazo_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('plazo')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->int('status');
         });

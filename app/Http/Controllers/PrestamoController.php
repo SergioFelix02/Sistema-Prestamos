@@ -31,15 +31,18 @@ class PrestamoController extends Controller
             'plazo_id' => 'required',
         ]);
 
+        $monto = Monto::find($validatedData['monto_id']);
+        $plazo = Plazo::find($validatedData['plazo_id']);
+
         $prestamo = new Prestamo();
         $prestamo->cliente_id = $validatedData['cliente_id'];
-        $prestamo->monto_id = $validatedData['monto_id'];
-        $prestamo->plazo_id = $validatedData['plazo_id'];
+        $prestamo->monto = $monto->monto;
+        $prestamo->plazo = $plazo->plazo;
         $prestamo->status = 1;
         $prestamo->save();
 
-        $cant = floatval($prestamo->monto_id);
-        $pago = $prestamo->plazo_id;
+        $cant = floatval($prestamo->monto);
+        $pago = $prestamo->plazo;
         $fecha = $prestamo->created_at;
         $fecha = date("Y/m/d",strtotime($fecha."+ 2 week"));
 
@@ -81,15 +84,18 @@ class PrestamoController extends Controller
             'plazo_id' => 'required',
         ]);
 
+        $monto = Monto::find($validatedData['monto_id']);
+        $plazo = Plazo::find($validatedData['plazo_id']);
+
         $prestamo = new Prestamo();
         $prestamo->cliente_id = $validatedData['cliente_id'];
-        $prestamo->monto_id = $validatedData['monto_id'];
-        $prestamo->plazo_id = $validatedData['plazo_id'];
+        $prestamo->monto = $monto->monto;
+        $prestamo->plazo = $plazo->plazo;
         $prestamo->status = 1;
         $prestamo->save();
 
-        $cant = floatval($prestamo->monto_id);
-        $pago = $prestamo->plazo_id;
+        $cant = floatval($prestamo->monto);
+        $pago = $prestamo->plazo;
         $fecha = $prestamo->created_at;
         $fecha = date("Y/m/d",strtotime($fecha."+ 2 week"));
 

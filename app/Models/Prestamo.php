@@ -14,8 +14,8 @@ class Prestamo extends Model
     protected $fillable = [
         'nombre',
         'cliente_id',
-        'monto_id',
-        'plazo_id',
+        'monto',
+        'plazo',
         'status',
     ];
 

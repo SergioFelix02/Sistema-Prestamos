@@ -32,15 +32,15 @@
                     <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.*')">
                         {{ __('Clientes') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Acerca de') }}
-                    </x-nav-link>
-                    {{-- <x-nav-link :href="route('montos.index')" :active="request()->routeIs('montos.*')">
+                    <x-nav-link :href="route('montos.index')" :active="request()->routeIs('montos.*')">
                         {{ __('Montos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('plazos.index')" :active="request()->routeIs('plazos.*')">
                         {{ __('Plazos') }}
-                    </x-nav-link> --}}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Acerca de') }}
+                    </x-nav-link>
                 </div>
             </div>
 
