@@ -249,17 +249,13 @@ DROP TABLE IF EXISTS `prestamos`;
 CREATE TABLE `prestamos` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `cliente_id` bigint unsigned NOT NULL,
-  `monto_id` bigint unsigned NOT NULL,
-  `plazo_id` bigint unsigned NOT NULL,
+  `monto` bigint unsigned NOT NULL,
+  `plazo` bigint unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `prestamos_cliente_id_foreign` (`cliente_id`),
-  KEY `prestamos_monto_id_foreign` (`monto_id`),
-  KEY `prestamos_plazo_id_foreign` (`plazo_id`),
   CONSTRAINT `prestamos_cliente_id_foreign` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `prestamos_monto_id_foreign` FOREIGN KEY (`monto_id`) REFERENCES `montos` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `prestamos_plazo_id_foreign` FOREIGN KEY (`plazo_id`) REFERENCES `plazos` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
