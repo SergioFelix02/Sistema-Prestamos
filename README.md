@@ -5,8 +5,8 @@ Pagina web con un sistema de préstamos y amortizaciones realizado como examen t
 <h3>Hecho Por</h3>
 Sergio Felix<br>
 <h3>Desarrollado en</h3>
-PHP<br>
-Laravel<br>
+PHP 8<br>
+Laravel 10<br>
 MySQL<br>
 <h3>Instrucciones</h3>
 (La BD se encuentra en la carpeta database)<br>
